@@ -1,0 +1,11 @@
+
+server.port: 8080
+spring.cloud.gateway.routes:
+- id: auth
+  uri: ${AUTH_SERVICE_URL}
+  predicates:
+  - Path=/auth/**
+- id: job
+  uri: ${JOB_SERVICE_URL}
+  predicates:
+  - Path=/jobs/**
