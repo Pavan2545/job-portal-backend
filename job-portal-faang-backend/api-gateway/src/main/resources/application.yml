@@ -4,6 +4,23 @@ server:
 spring:
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+              - "http://localhost:5175"
+              - "https://job-portal-frontend.vercel.app"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
       routes:
         - id: auth-service
           uri: ${AUTH_SERVICE_URL}
